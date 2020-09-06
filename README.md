@@ -1,6 +1,5 @@
 ## Installation instructions
 This install requires docker and docker-compose be installed on your system \
-A shell script for automating this install can be found here : https://github.com/TristanB1994/install_docker.git \
 
 ~/git clone https://github.com/TristanB1994/prepr_larvelApp.git \
 ~/cd prepr_laravelApp \
