@@ -1,7 +1,8 @@
 ## Installation instructions
-~/git clone https://github.com/TristanB1994/prepr_larvelApp.git
-~/cd prepr_laravelApp
-~/docker run --rm -v $(pwd):/app composer install
+~/git clone https://github.com/TristanB1994/prepr_larvelApp.git \
+~/cd prepr_laravelApp \
+~/docker run --rm -v $(pwd):/app composer install \
+~/docker-compose up -d
 
 ## Code of Conduct
 
