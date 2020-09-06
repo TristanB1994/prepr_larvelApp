@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Locations;
+use App\Locations;
 
 class DashboardController extends Controller
 {
 	public function make() 
 	{
 
-		$locations = Locations::all();
+		$locations = Locations::all();	
 
-		foreach($locations as $location) 
-		{
-
-			echo $location;
-
-		}die;	
-
-		return view('dashboard');
+		return view('dashboard', [
+			'locations' => $locations
+		]);
 	}
 }

@@ -195,7 +195,14 @@
             </form>
             <h2 class="header-labs">Labs</h2>
             <!--php code starts here-->
-            <div class="labs">
+	    
+		<ul>
+			@foreach($locations as $location)
+				<li> {{ $location }} </li>
+			@endforeach
+		</ul>
+
+	    <div class="labs">
                 <div class="lab">
                     <h3>We Geek</h3>
                     <div class="map"></div>
