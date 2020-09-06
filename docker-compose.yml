@@ -51,8 +51,8 @@ services:
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
-      - ./mysql/locations.csv:/etc/mysql/
-      - ./mysql/locations.sql:/etc/mysql/
+      - ./mysql/locations.csv:/etc/mysql/locations.csv
+      - ./mysql/locations.sql:/etc/mysql/locations.sql
     networks:
       - app-network
 
