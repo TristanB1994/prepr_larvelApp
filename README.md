@@ -9,10 +9,10 @@ This install requires docker and docker-compose be installed on your system \
 
 ~/docker-compose exec db bash \
 :/# mysql -u root -p \
-mysql > GRANT ALL ON laravel.* TO 'laraveluser'@'%' IDENTIFIED BY 'your_laravel_db_password'; \
+mysql > GRANT ALL ON laravel.* TO '${USER}'@'%' IDENTIFIED BY 'your_laravel_db_password'; \
 mysql > FLUSH PRIVILEGES \
 mysql > exit \ 
-~/docker-compose exec app php artisan migrate
+~/docker-compose exec app php artisan migrate \
 
 ## Code of Conduct
 
