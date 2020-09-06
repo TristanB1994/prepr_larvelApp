@@ -7,7 +7,6 @@ This install requires docker and docker-compose be installed on your system \
 ~/sudo chown -R $USER:$USER ~/prepr_larvelApp \
 ~/docker-compose up -d \
 
-~/docker-compose exec app php artisan config:cache \
 ~/docker-compose exec db bash \
 :/# mysql -u root -p \
 mysql > GRANT ALL ON laravel.* TO '${USER}'@'%' IDENTIFIED BY 'your_laravel_db_password'; \
