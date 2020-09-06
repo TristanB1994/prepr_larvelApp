@@ -4,7 +4,7 @@ This install requires docker and docker-compose be installed on your system \
 ~/git clone https://github.com/TristanB1994/prepr_larvelApp.git \
 ~/cd prepr_laravelApp \
 ~/docker run --rm -v $(pwd):/app composer install \
-~/sudo chown -R $USER:$USER ~/prepr_laravelApp \
+~/sudo chown -R $USER:$USER ~/prepr_larvelApp \
 ~/docker-compose up -d \
 
 ~/docker-compose exec db bash \
