@@ -106,7 +106,7 @@
 
 <body>
     <div id="logo">
-        <img src=./img/Prepr-Logo.png alt="prepr_logo"></div>
+        <img src={{ asset('imgs/Prepr-Logo.png') }} alt="prepr_logo"></div>
     <div id="loginfo">
         <form method="post">
             <label class="usr">USERNAME</label> <br />

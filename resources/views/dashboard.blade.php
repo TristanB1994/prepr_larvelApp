@@ -176,7 +176,7 @@
 
 <body>
     <div id="left">
-        <img src="./img/Prepr-Logo.png" alt="prepr_logo">
+        <img src="{{ asset('imgs/Prepr-Logo.png') }}" alt="prepr_logo">
         <div class="nav">
             <div>LABS</div>
             <div>FAVOURITES</div>
@@ -195,29 +195,20 @@
             </form>
             <h2 class="header-labs">Labs</h2>
             <!--php code starts here-->
-	    
-		<ul>
-			@foreach($locations as $location)
-				<li> {{ $location }} </li>
-			@endforeach
-		</ul>
 
-	    <div class="labs">
-                <div class="lab">
-                    <h3>We Geek</h3>
-                    <div class="map"></div>
-                </div>
-                <div class="lab">
-                    <h3>We Geek</h3>
-                    <div class="map"></div>
-                </div>
-                <div class="lab">
-                    <h3>We Geek</h3>
-                    <div class="map"></div>
-                </div> 
-
-            </div>
+	    <div class="form-group">
+    		<label for="address_address">Address</label>
+    		<input type="text" id="address-input" name="address_address" class="form-control map-input">
+    		<input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+    		<input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+	    </div>
+	    <div id="address-map-container" style="width:100%;height:400px; ">
+    		<div style="width: 100%; height: 100%" id="address-map"></div>
+	    </div>
             <!--php code endss here-->
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
+    <script src="/js/mapInput.js"></script>
 </body></html>

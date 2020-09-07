@@ -53,6 +53,7 @@ services:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./mysql/locations.csv:/etc/mysql/locations.csv
       - ./mysql/locations.sql:/etc/mysql/locations.sql
+      - ./mysql/locations.xml:/etc/mysql/locations.xml
     networks:
       - app-network
 
