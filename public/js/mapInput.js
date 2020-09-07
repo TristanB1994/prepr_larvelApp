@@ -123,4 +123,6 @@ downloadUrl('', function(data) {
       position: point,
       label: icon.label
     });
+  });
+});
 
