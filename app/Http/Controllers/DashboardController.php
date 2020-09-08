@@ -10,10 +10,11 @@ class DashboardController extends Controller
 	public function make() 
 	{
 
-		$locations = Locations::all();	
 
+		$map= $_ENV['GOOGLE_MAPS_API_KEY'];
+		
 		return view('dashboard', [
-			'locations' => $locations
+			'map' => $map
 		]);
 	}
 }

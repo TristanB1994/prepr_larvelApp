@@ -47,12 +47,6 @@
             border-radius: 5px;
         }
 
-        #container {
-            text-indent: 60px;
-            width: 100%;
-            
-        }
-
         .topbar {
             width: 100%;
             height: 60px;
@@ -91,6 +85,11 @@
             display: block;
             margin: 0 auto;
         }
+        #container{
+                text-indent:30px;
+                width: 100%;
+                
+            }
 
         .lab {
             float: left;
@@ -98,11 +97,11 @@
 
         }
 
-        .map {
+        #map {
             margin-left: 60px;
             background-color: #E5E5E5;
-            width: 75%;
-            height: 300px;
+            width: 700px;
+            height: 500px;
         }
         
         @media (max-width:400px){
@@ -126,24 +125,13 @@
             }
             .topbar{
                 display: none;
-            }
-            #container{
-                text-indent:30px;
-                width: 100%;
-                
-            }
             
             .header-lookup{
                 font-size: 25px;
                 margin-top: 10%;
                 
             }
-            .searchbar{
-                height: 30px;
-                width: 70%;
-                text-align: left;
-                
-            }
+
             form button {
             width: 30px;
             height: 30px;
@@ -166,9 +154,6 @@
                 text-align: center;
               
             }
-            .map{
-                display: none;
-            }
         }
     </style>
     <title>Dashboard</title>
@@ -187,28 +172,22 @@
         <div class="topbar"></div>
         <div id="container">
             <h1 class="header-lookup">LAB LOOKUP</h1>
-            <form method="post">
-                <input class="searchbar" type="text"></input>
-                <button>
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            
             <h2 class="header-labs">Labs</h2>
             <!--php code starts here-->
 
-	    <div class="form-group">
-    		<label for="address_address">Address</label>
-    		<input type="text" id="address-input" name="address_address" class="form-control map-input">
-    		<input type="hidden" name="address_latitude" id="address-latitude" value="0" />
-    		<input type="hidden" name="address_longitude" id="address-longitude" value="0" />
-	    </div>
-	    <div id="address-map-container" style="width:100%;height:400px; ">
-    		<div style="width: 100%; height: 100%" id="address-map"></div>
-	    </div>
-            <!--php code endss here-->
+            <div class="form-group">
+                <label for="address_address">Address</label>
+                <input type="text" id="address-input" name="address_address" class="form-control map-input">
+                <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                <input type="hidden" name="address_longitude" id="address-longitude"    value="0" />
+            </div>
+            <div id="address-map-container" style="width:100%;height:400px; ">
+                <div style="width: 100%; height: 100%" id="address-map"></div>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ $map }}&libraries=places&callback=initMap" async defer></script>
     <script src="/js/mapInput.js"></script>
 </body></html>
