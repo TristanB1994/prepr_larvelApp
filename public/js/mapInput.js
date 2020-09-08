@@ -1,40 +1,3 @@
-// function loadLocations() {
-//     var xml = new XMLHttpRequest;
-//     xml.open('GET', 'locations.xml', true);
-//     xml.responseType = 'xml';
-//     xml.send();
-//     return xml.responseXML
-// }
-
-
-
-// $.ajax({
-//     type: "GET",
-//     async: true,
-//     url: "locations.xml",
-//     dataType: "xml",
-//     success:
-//     function (xml) {      
-//         // var stuff = xml.response;
-//         console.log(xml);
-
-//         var node, childNodes = xml.documentElement.childNodes;
-        
-//         // for (var i = 0; i < items.length; i++) {
-//         //     var lat = items[i].getAttribute('latitude');
-//         //     var long = items[i].getAttribute('longitude');
-//         //     var latLng = new google.maps.LatLng(lat, long);
-//         //     var marker = new google.maps.Marker({
-//         //         position:  latLng,
-//         //         map: map,
-//         //         label:items[i].title
-//         //     });
-//         //     alert(marker.position)
-            
-//         // }
-//     }
-// });
-
 function initMap() {
     var mapOptions = {
         zoom: 3.5,
@@ -61,7 +24,6 @@ function initMap() {
 
                 var lab = makeMarkers(item, map, infoWindow);  
                 
-                console.log(typeof(lab));
             }
         },
         error: function() {
@@ -72,37 +34,50 @@ function initMap() {
 };
 
 function makeMarkers(locationsData, map, infoWindow){
-    var lab = { 
-        title:"", 
-        lat:"", 
-        long:"",
-        latlon:""
+    var lab = {}
+    var points = [
+        "Title",
+        "Category",
+        "Latitude",
+        "Longitude",
+        "Address",
+        "City",
+        "Country"
+    ];
+    for (var z = 0; z < points.length; z++) {
+        var col = points[z];
+        lab[(col)] = "";
     }
+
     for (var i = 0; i < locationsData.length; i++) {
-        if ( locationsData[i].nodeName == "Latitude") {
-            lab['lat'] = parseFloat(locationsData[i].textContent); 
-        }
-        if ( locationsData[i].nodeName == "Longitude") {
-            lab['long'] = parseFloat(locationsData[i].textContent);
-        }
-        if ( locationsData[i].nodeName == "Title") {
-            lab['title'] = locationsData[i].textContent;
-        }
-        if ( locationsData[i].nodeName == "Address") {
-            lab['adr'] = locationsData[i].textContent;
+        
+        let node = String(locationsData[i].nodeName);
+        let val = String(locationsData[i].textContent)
+
+
+        if ( points.includes(node) ){
+            // console.log(`${node} : ${val}`);
+            lab[node] = val
         }
     }
-    lab['latlon'] = { lat: lab.lat, lng: lab.long}
+    lab['latlon'] = { lat: parseFloat(lab.Latitude), lng: parseFloat(lab.Longitude) };
+    // console.log(lab.latlon)
     var marker = new google.maps.Marker({
         position: lab.latlon,
-        title: lab.title
+        title: lab.Title
     });
 
     marker.setPosition(lab.latlon)
     marker.setMap(map);
 
+    var infoContent = 
+    `<h1> ${lab.Title} </h1>
+    <p> ${lab.Address} </p>
+    <p> ${lab.City}</p>
+    <p> ${lab.Country}</p>`
+    
     marker.addListener("click", () => {
-        infoWindow.setContent(lab.adr)
+        infoWindow.setContent(infoContent)
         infoWindow.open(map, marker)
     })
     return marker
