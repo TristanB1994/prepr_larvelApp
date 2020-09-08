@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
@@ -10,6 +10,8 @@ WORKDIR /var/www
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
+    libzip-dev \
+    nodejs \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     locales \
@@ -18,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \ 
+    npm 
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -47,3 +50,4 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
+

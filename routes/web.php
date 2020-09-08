@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
+
+// Route::redirect('register', 'login', 301);
 
 Route::get('/dashboard', 'DashboardController@make');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes([
+    'register'=>false
+]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
