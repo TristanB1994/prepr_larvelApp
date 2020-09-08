@@ -14,6 +14,12 @@ mysql > FLUSH PRIVILEGES \
 mysql > exit \ 
 ~/docker-compose exec app php artisan migrate \
 
+
+###Starting the php applications
+~/docker exec -it app bash
+/var/www$ composer require laravel/ui
+/var/www$ php artisan ui bootstrap --auth
+
 ## Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
