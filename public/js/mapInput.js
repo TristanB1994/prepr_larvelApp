@@ -71,16 +71,18 @@ function makeMarkers(locationsData, map, infoWindow){
     marker.setMap(map);
 
     var infoContent = 
-    `<h1> ${lab.Title} </h1>
-    <p> ${lab.Address} </p>
+    `<div id="infoBox">
+    <h1><strong> ${lab.Title} </strong></h1>
+    <p><strong> ${lab.Address} </strong></p>
     <p> ${lab.City}</p>
-    <p> ${lab.Country}</p>`
+    <p> ${lab.Country}</p>
+    </div>`
     
     marker.addListener("click", () => {
         infoWindow.setContent(infoContent)
         infoWindow.open(map, marker)
     })
-    return marker
+    return lab
 };
 
 // function labInfo (map)
