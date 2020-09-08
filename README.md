@@ -16,9 +16,9 @@ mysql > exit \
 
 
 ###Starting the php applications
-~/docker exec -it app bash
-/var/www$ composer require laravel/ui
-/var/www$ php artisan ui bootstrap --auth
+~/docker exec -it app bash  \
+/var/www$ composer require laravel/ui  \
+/var/www$ php artisan ui bootstrap --auth   \
 
 ## Code of Conduct
 
